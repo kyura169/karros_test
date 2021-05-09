@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.topografix.com/GPX/1/1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="gpx" type="ns:gpxType" xmlns:ns="http://www.topografix.com/GPX/1/1"/>
+  <xs:complexType name="linkType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="text"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="href"/>
+  </xs:complexType>
+  <xs:complexType name="metadataType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="desc"/>
+      <xs:element type="xs:string" name="author"/>
+      <xs:element type="ns:linkType" name="link" xmlns:ns="http://www.topografix.com/GPX/1/1"/>
+      <xs:element type="xs:string" name="time"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="wptType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element name="sym">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="/static/wpt/Waypoint"/>
+            <xs:enumeration value="/static/wpt/panoramic.png"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="lat" use="optional"/>
+    <xs:attribute type="xs:string" name="lon" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="trkptType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="ele"/>
+      <xs:element type="xs:string" name="time"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="lat" use="optional"/>
+    <xs:attribute type="xs:string" name="lon" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="trksegType">
+    <xs:sequence>
+      <xs:element type="ns:trkptType" name="trkpt" maxOccurs="unbounded" minOccurs="0" xmlns:ns="http://www.topografix.com/GPX/1/1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="trkType">
+    <xs:sequence>
+      <xs:element type="ns:trksegType" name="trkseg" xmlns:ns="http://www.topografix.com/GPX/1/1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="gpxType">
+    <xs:sequence>
+      <xs:element type="ns:metadataType" name="metadata" xmlns:ns="http://www.topografix.com/GPX/1/1"/>
+      <xs:element type="ns:wptType" name="wpt" maxOccurs="unbounded" minOccurs="0" xmlns:ns="http://www.topografix.com/GPX/1/1"/>
+      <xs:element type="ns:trkType" name="trk" xmlns:ns="http://www.topografix.com/GPX/1/1"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="version"/>
+    <xs:attribute type="xs:string" name="creator"/>
+  </xs:complexType>
+</xs:schema>

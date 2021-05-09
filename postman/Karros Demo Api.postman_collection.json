@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "bc1ed7c8-1d93-4817-a10a-afb8585c37d9",
+		"name": "Karros Demo Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Upload Gpx File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "gpxFile",
+							"type": "file",
+							"src": "/C:/Users/Vuong Nguyen/Documents/sample.gpx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/track/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"track",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get latest tracks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "gpxFile",
+							"type": "file",
+							"src": "/C:/Users/Vuong Nguyen/Documents/sample.gpx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/track/latest?pageIndex=0&pageSize=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"track",
+						"latest"
+					],
+					"query": [
+						{
+							"key": "pageIndex",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get track detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "gpxFile",
+							"type": "file",
+							"src": "/C:/Users/Vuong Nguyen/Documents/sample.gpx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/track/210",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"track",
+						"210"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
